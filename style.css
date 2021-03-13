@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: Roboto, Helvetica, sans-serif, Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.todo_title {
+    width: auto;
+    height: 88px;
+    background: #FF9393;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
+
+.task_input {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_input {
+    padding-left: 20px;
+    width: 599px;
+    height: 63px;
+    background: #C2C2C2;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 5px;
+    color: #818181;
+}
+
+.save_button {
+    margin-left: 23px;
+    width: 158px;
+    height: 69px;
+    background: #C2C2C2;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 5px;
+    color: #181818;
+}
+
+.task_list {
+    margin: auto;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    width: 780px;
+    min-height: 526px;
+    background: #C4C4C4;
+    box-shadow: 0px 0px 20px #000000;
+    border-radius: 5px;
+}
+
+.task {
+    display: flex;
+    position: relative;
+    padding-left: 20px;
+    align-items: center;
+    width: 732px;
+    height: 66px;
+    background: #E0E0E0;
+    border-radius: 5px;
+    margin-bottom: 22px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.delete_button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    background: #FF9393;
+}
