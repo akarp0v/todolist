@@ -11,20 +11,36 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 function saveToServer(toSave) {
-  let xhr = new XMLHttpRequest(); // new HttpRequest instance 
-  xhr.open("PUT", 'http://localhost:3000/item');
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.send(JSON.stringify({
-    title: toSave
-  }));
-  xhr.onload = function () {
-    if (xhr.status != 200) {
-      alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
-    } else {
-      let response = JSON.parse(xhr.response);
-      console.log(response);
-    }
-  };
+  const url = 'http://localhost:3000/item';
+  const request = fetch(url, {
+    method: 'PUT',
+    // headers: {  
+    //   "Content-type": "application/json"
+    // },  
+    body: { title: toSave }
+  });
+
+  request.then(res => {
+    return res.json();
+  }, res => {
+    throw `Ошибка ${res.status}`;
+  })
+    .then(res => console.log(res));
+    
+  // let xhr = new XMLHttpRequest(); // new HttpRequest instance 
+  // xhr.open("PUT", 'http://localhost:3000/item');
+  // xhr.setRequestHeader("Content-Type", "application/json");
+  // xhr.send(JSON.stringify({
+  //   title: toSave
+  // }));
+  // xhr.onload = function () {
+  //   if (xhr.status != 200) {
+  //     alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+  //   } else {
+  //     let response = JSON.parse(xhr.response);
+  //     console.log(response);
+  //   }
+  // };
 }
 
 function removeFromServer(toRemove) {
@@ -45,18 +61,27 @@ function removeFromServer(toRemove) {
 }
 
 function getFromServer(callBack) {
-  let xhr = new XMLHttpRequest(); // new HttpRequest instance 
-  xhr.open("GET", 'http://localhost:3000/item');
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.send();
-  xhr.onload = function () {
-    if (xhr.status != 200) {
-      alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
-    } else {
-      let response = JSON.parse(xhr.response);
-      callBack(response);
-    }
-  };
+  const url = 'http://localhost:3000/item';
+  fetch(url)
+    .then(response => response.json())
+    .then(result => callBack(result));
+
+  // let xhr = new XMLHttpRequest(); // new HttpRequest instance 
+  // xhr.open("GET", url);
+  // xhr.setRequestHeader("Content-Type", "application/json");
+  // xhr.send();
+  // xhr.onload = function () {
+  //   if (xhr.status != 200) {
+  //     alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+  //   } else {
+  //     let response = JSON.parse(xhr.response);
+  //     callBack(response);
+  //   }
+  // };
+  // let response = await fetch(url);
+  // let result = await response.json();
+  // callBack(result);
+  // console.log(result);
 }
 
 function getItemByText(text) {
